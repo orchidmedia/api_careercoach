@@ -1,0 +1,59 @@
+DANIEL ORTIZ VEGA,Date of Birth: 03 de julio de 1993
+Address: Cll 6 B BIS 79 C 04 BOGOTÁ, COLOMBIA
+Mobile: +57 3004176729
+Linkedin: https://www.linkedin.com/in/daniel-ortiz-vega-8263362b/
+GitHub: https://github.com/ALAxHxC
+StackOverflow: https://stackoverflow.com/users/5248230/daniel-ortiz?tab=profile
+email:daniel72584@gmail.com
+DNI: 1030626898,PROFILE,Senior Backend Developer. Experience since 2015 in software and business development,
+design, building and creating MVPs for Apps, API’s. Development of software to create
+Backend solutions particularly focused on Node JS and Python with SQL databases and
+NoSQL like Firebase, REST and MongoDB, Test frameworks like mocha and chai, and
+webhooks and GraphQL for interactions.,Knowledge and experience in Scrum working methodology, design business architect,
+searching and creating developer teams with the appropriate resources and skills.,● SKILLS: A passion for learning, challenges, and solve hard problems. Team,communication, and love for new ventures and knowledges.,● CLOUD: Atlas MongoDB, AWS EC2, AWS RDS, AWS VPC,AWS S3, AWS
+Beanstalk, Heroku y Firebase Firestore, Firebase Database realtime, Firebase Cloud
+Store, Firebase Authentication.,TECHNICAL:,Typescript, GraphQL,● JavaScript: Node JS, promises, express, React JS, mocha, Jest, Babel, ES7,,● Python: Keras, Bottle, Flask, UnitTest, matplotlib, pandas..
+● Databases: SQL (Maria DB, Mysql), NoSQL (Mongo, Dynamo, Firestore database,realtime, Firebase Cloud Messaging), Analytics: (Big Query),● Mobile: Geolocation, Bluetooth, BLE (Beacons and IoT), WIFI,,resources,optimization.,● General: digital marketing, CEO, SEM, dialogflow, NPL.
+● Platforms: Firebase, GCP, Heroku, Mongo Atlas, SendGrid, SendInBlue.,WORK EXPERIENCE,MercadoLibre June (2021)- Current: Senior Analysts Software. Working in the shipping area as technical
+lead and developer in a team based in Bogota. Continuous working with other teams to improve the shipping
+area in the company with new features and optimize processes with platforms.,Globant. August (2020) -June (2021): Semi Senior Backend developer a. Started to structure and make
+more robust backend services using TypeScript and Golang. Continuous working with webhooks with different,platforms as Shopify and Universe to communicate payments between platforms. Creation of business models,
+architect, and KPI’s functions for Backend platform in Waller project for Fandragon Company.,Rebus Technologies. August (2019-2020): Senior Backend developer and Lead Developer. Started to
+structure and make more robust the backend services. Continuous working in PSP Middleware with different
+platforms as PayU, Paymentez and ERP’s in clients. Creation of business models, architect, and KPI’s functions
+for Backend platform in Rebus app. Backend team leader and manager of services such as Login, payments,
+notifications, reports, etc..,Senior Backend developer and Lead Developer. Started to structure and make more robust the backend
+services. Continuous working in PSP Middleware with different platforms as PayU, Paymentez and ERP’s in
+clients. Creation of business models, architect, and KPI’s functions for Backend platform in Rebus app. Backend
+team leader and manager of services such as Login, payments, notifications, reports, etc..,Procibernetica SA. January (2018) - August (2019): Business developer in the research area.
+Experience with proximity and locations with API’s and SDK’s as MOCA, Sentiance, Konkat.io. Quick creation
+of demos and MVP for potential clients. Search for KPI’s and technologies to satisfy clients’ needs. In search of
+technologies to be used to create new businesses. Experience with IA (TensorFlow, Sentiance SDK, AWS
+Alexa, Watson), NPL (DialogFlow, Chatfuel, api.ia), Ecommerce (Infinity Commerce, Wordpress, etc…),The result of the research was ZonaWiki. The first version was Social Ecommerce with Messenger Facebook.
+In charge of architecture with AWS, first configurations, and integration with PSP platform MercadoPago.,Digital Communication Systems (DCS). August (2016) - August (2017): Main developer in the team.
+Created a web app for remote places with a slow internet connection to provide educational information for
+primary and highschools. Worked in an internal native app to calculate the distance and topographic profile
+between two antennas.,Main achievement: Created a native app for medical uses. This app allows to collect data in real time from
+medical devices (Glucometer, Scale, Oximeter, Tensiometer, Thermometer) by BLE and Bluetooth connection,
+and sends it via SOAP and REST.,Corporación integral del medio ambiente CIMA. December (2015) - August (2016). Migrate
+services, files, and resources from Windows server to CentOS 7. Solved bugs in their app and created new
+functionalities such as send mails, HSEQ modules.,Tutor and consultant since 2013: Help students in areas like mathematics, investigation, and development.,STUDIES,NestJS,NestJS Fundamentals,SCRUMstudy,Scrum Fundamentals Certified (SFC™),Hackerrank,Rest API (Intermediate),UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
+Ingeniero Telemático ( Tesis Recognition)
+Tecnología de Sistematización de Datos
+CICOM 2017,COMPODESS 2018: Sistema de monitoreo domiciliario mediante el uso de tecnología BLE
+(Bluetooth Low Energy) (Home monitoring system through the use of BLE technology).,GLOBAL KNOWLEDGE
+JAVA SE FUNDAMENTALS SE7
+JAVA SE PROGRAMMING SE7,GOOGLE ACADEMY
+FUNDAMENTALS MARKETING,MONGO UNIVERSITY
+M121 The MongoDB Aggregation Framework
+M001 Mongo Basics
+M320 Data modeling
+M220P: MongoDB for Python Developers
+M220JS: MongoDB for Javascript Developers,COURSERA
+Introduction to Deep Learning & Neural Networks with Keras
+Building Conversational Experiences with Dialogflow
+Getting Started with Google Kubernetes Engine
+Deep Neural Networks with PyTorch
+IBM AI Engineering
+Google Project Manager,UDEMY:
+Curso completo de Inteligencia Artificial con Python,
