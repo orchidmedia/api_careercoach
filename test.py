@@ -1,23 +1,31 @@
+import re
+
 response = {
-    "id": "chatcmpl-8HDklB6Z6xvmLhVJLOKJHeHwBISRz",
-    "object": "chat.completion",
-    "created": 1699115135,
-    "model": "ft:gpt-3.5-turbo-0613:orchid-media::8FvZOXX3",
-    "choices": [
-        {
-            "index": 0,
-            "message": {
-                "role": "assistant",
-                "content": "1. Build a strong technical foundation: Start by gaining expertise in programming languages, databases, cloud platforms, and software development methodologies.\n\n2. Expand your leadership skills: Take courses or workshops focused on leadership, team management, and effective communication.\n\n3. Gain project management experience: Look for opportunities to lead technical projects and learn project planning, resource allocation, and risk management.\n\n4. Seek leadership roles: Apply for positions that require technical leadership, such as a tech lead or engineering manager, and highlight your experience and skills in this area.\n\nRemember to constantly improve your technical knowledge, stay updated with industry trends, and develop a vision for technical innovation."
-            },
-            "finish_reason": "stop"
-        }
-    ],
-    "usage": {
-        "prompt_tokens": 1446,
-        "completion_tokens": 129,
-        "total_tokens": 1575
-    }
+    "message": "Based on your profile, I recommend the following career path for you:\n\n1. Senior Backend Developer: "
+               "With your experience in software and business development, focus on Node JS and Python development, "
+               "SQL and NoSQL databases, and test frameworks like mocha and chai. Gain expertise in cloud platforms "
+               "like Atlas MongoDB, AWS, and Firebase.\n\n2. Scrum and Business Architect: Utilize your knowledge and "
+               "experience in Scrum working methodology, design business architecture, and create developer teams "
+               "with appropriate resources and skills. Develop a passion for learning, problem-solving, "
+               "and team communication.\n\n3. Mobile and IoT Developer: Expand your skills in geolocation, Bluetooth, "
+               "BLE (Beacons and IoT), WIFI, and resource optimization. Learn about digital marketing, CEO, SEM, "
+               "and NPL. Gain experience with platforms like Firebase, GCP, and Mongo Atlas.\n\n4. Technical Lead and "
+               "Manager: With your leadership experience, focus on structuring and making robust backend services. "
+               "Manage teams and projects, create business models, and work with payment platforms and ERP "
+               "systems.\n\nConsider taking online courses and certifications in NestJS, Scrum, and cloud platforms. "
+               "You can also explore research and development opportunities in areas like AI, NPL, "
+               "and Ecommerce.\n\nNote: This is just a recommendation based on your profile. Choose the career path "
+               "that aligns with your interests and career goals."
 }
 
-print(response['choices'][0]['message']['content'].split('\n\n'))
+descriptions = response['message'].split('\n\n')
+
+regex = r'\d+\.\s([^:]+):'
+
+# Buscar los títulos en el texto
+titulos = re.findall(regex, response['message'])
+
+for title in range(0, len(titulos)):
+    print(titulos[title])
+    print(descriptions[title + 1].replace(titulos[title], ''))
+    print('-------------------')

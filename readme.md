@@ -1,5 +1,16 @@
 ## UPLOAD FILE PDF
 
+## LOCAL
+```
+uvicorn main:app --reload --env-file .env
+
+```
+##
+Base URL 
+```
+https://careercoach-b957c7cfa4b2.herokuapp.com/
+```
+
 ```
 curl --location 'http://127.0.0.1:8000/upload/csv' \
 --form 'file=@"/Users/dortizvega/Downloads/HOJA DE VIDA 1.pdf"'

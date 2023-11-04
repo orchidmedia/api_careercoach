@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 
 KEY = os.environ['OPEN_IA_KEY']
 MODEL = os.environ['OPEN_IA_MODEL']
@@ -15,7 +16,7 @@ app = FastAPI()
 
 logger = logging.getLogger(__name__)
 
-
+REGEX_TITLES = r'\d+\.\s([^:]+):'
 @app.get("/")
 async def root():
     logger.info("Hellow world")
@@ -62,8 +63,7 @@ async def recommend(recommend: Recommend):
                                                "content": "I recommend this 4 carrier path for you"
                                            }
                                        ])
-
-    return list(filter(lambda text: text != "", completion.choices[0].message.content.split('\n\n')))
+    return completion
 
 
 @app.post('/recommend')
@@ -87,5 +87,14 @@ async def challenge(recommend: Recommend):
         ]
     )
 
-    print(completion)
-    return {'message': completion.choices[0].message.content}
+    messages = completion.choices[0].message.content
+    descriptions = messages.split('\n\n')
+    # Buscar los títulos en el texto
+    titles = re.findall(REGEX_TITLES, messages)
+    response = []
+    for title in range(0, len(titles)):
+        response.append({
+            "title": titles[title],
+            "description": descriptions[title + 1].replace(titles[title], '')
+        })
+    return response
