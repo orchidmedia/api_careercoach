@@ -18,7 +18,11 @@ curl --location 'http://127.0.0.1:8000/upload/csv' \
 
 ### request for carrier suggestion
 ```
-
+curl --location 'http://127.0.0.1:8000/recommend' \
+--header 'Content-Type: application/json' \
+--data '{
+    "recommend":"I want be a software develop"
+}'
 ```
 
 
