@@ -2,6 +2,8 @@ import logging
 import os
 import re
 
+from starlette.middleware.cors import CORSMiddleware
+
 KEY = os.environ['OPEN_IA_KEY']
 MODEL = os.environ['OPEN_IA_MODEL']
 
@@ -13,7 +15,10 @@ from model.recommed import Recommend
 from openia.openia import execute_single_prompt
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 logger = logging.getLogger(__name__)
 
 REGEX_TITLES = r'\d+\.\s([^:]+):'
