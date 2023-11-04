@@ -17,7 +17,9 @@ from openia.openia import execute_single_prompt
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*']
+    allow_origins=['*'],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 logger = logging.getLogger(__name__)
 
