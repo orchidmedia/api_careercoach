@@ -44,6 +44,7 @@ async def upload_csv(file: UploadFile):
     with open(output_filename, "w", encoding="utf-8") as file:
         file.write(text)
     os.remove(file_location)
+    print(text)
     return {"info": "file uploaded successfully"}
 
 
