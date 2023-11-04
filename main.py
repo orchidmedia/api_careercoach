@@ -1,24 +1,24 @@
 import logging
 import os
-from logging import log
 
 KEY = os.environ['OPEN_IA_KEY']
 MODEL = os.environ['OPEN_IA_MODEL']
 
-from fastapi import FastAPI, UploadFile
 import pdfx
-import openai
-openai.api_key = KEY
+
+from fastapi import FastAPI, UploadFile
 
 from model.recommed import Recommend
 from openia.openia import execute_single_prompt
 
 app = FastAPI()
 
+logger = logging.getLogger(__name__)
 
 
 @app.get("/")
 async def root():
+    logger.info("Hellow world")
     return {"message": "Hello World"}
 
 
@@ -37,11 +37,11 @@ async def upload_csv(file: UploadFile):
     output_filename = f"HV.txt"
     with open(output_filename, "w", encoding="utf-8") as file:
         file.write(text)
-
+    os.remove(file_location)
     return {"info": "file uploaded successfully"}
 
 
-@app.post('/recommend')
+@app.post('/career')
 async def recommend(recommend: Recommend):
     hv_data = open("HV.txt", "r", encoding="utf-8")
     # Create a prompt for the OpenAI API
@@ -59,32 +59,30 @@ async def recommend(recommend: Recommend):
                                             },
                                            {
                                                "role": "system",
-                                               "content": "I recommend this carriers fours path for you"
+                                               "content": "I recommend this 4 carrier path for you"
                                            }
                                        ])
 
-    return list(filter(lambda text: text != "", completion.choices[0].message.content.split('\n')))
+    return list(filter(lambda text: text != "", completion.choices[0].message.content.split('\n\n')))
 
 
-@app.post('/challenge')
+@app.post('/recommend')
 async def challenge(recommend: Recommend):
-    prompt = f"Q: If i want to become a {recommend.recommend}?\n"
+    hv_data = open("HV.txt", "r", encoding="utf-8")
     # Execute the prompt against the chosen LLM Model
     completion = execute_single_prompt(
         model=MODEL,
         messages=[
-            {"role": "user",
-             "content": prompt
+            {
+                "role": "user",
+                "content": f"my hv content {hv_data.read()}"
+            },
+            {"role": "assistant",
+             "content": "Based in the previus message, I recommend this 4 carrier path for you"
              },
             {
                 "role": "system",
-                "content": f"As a system, explain the challenge to the user, tech, business, and people that as a user will face in the future."
-                           f"divide in 4 parts, tech, business, and people"
-            },
-
-            {
-                "role": "assistant",
-                "content": "Those will be challenge that you will face in the future"
+                "content": "I would like to recommend this 4 carrier path for you"
             }
         ]
     )
