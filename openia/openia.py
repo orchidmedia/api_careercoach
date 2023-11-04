@@ -1,19 +1,12 @@
 # Executes a single prompt against the chosen LLM Model
-def execute_single_prompt(prompt, role="system", content_only=True):
-    log(logging.DEBUG, f"execute_single_prompt - {prompt}")
+from langchain.adapters import openai
 
+def execute_single_prompt(model:str,messages:list[dict]):
     completion = openai.ChatCompletion.create(
-        engine=os.environ['OPENAI_MODEL'],
-        deployment_id=os.environ['OPENAI_MODEL'],
-        messages=[
-            {'role': role,
-             'content': prompt}
-        ],
+        model=model,
+        messages=messages,
+        temperature=0.9,
+        max_tokens=1024
+        # token_max_length=500,
     )
-
-    log(logging.DEBUG, f"execute_single_prompt result - {completion.choices[0].message['content']}")
-
-    if content_only:
-        return completion.choices[0].message['content']
-    else:
-        return completion
+    return completion
