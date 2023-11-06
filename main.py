@@ -1,8 +1,11 @@
+import json
 import logging
 import os
 import re
 
 from starlette.middleware.cors import CORSMiddleware
+
+from openia.serapi import search_job
 
 KEY = os.environ['OPEN_IA_KEY']
 MODEL = os.environ['OPEN_IA_MODEL']
@@ -48,54 +51,7 @@ async def upload_csv(file: UploadFile):
     with open(output_filename, "w", encoding="utf-8") as file:
         file.write(text)
     os.remove(file_location)
-    functions = [
-        {
-            "name": "get_location",
-            "description": "Get the city and country from the user",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
-                        "type": "string",
-                        "description": "The city, e.g. Bogota",
-                    },
-                    "country": {
-                        "type": "string",
-                        "description": "The country, e.g. Colombia",
-                    },
-                },
-                "required": ["country"],
-            },
-        },
-        {
-            "name": "get_skills",
-            "description": "Get a list of skills in the text",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "skills": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "A list of skills, e.g. ['nodejs', 'programming', 'leadership']"
-                    }
-                },
-                "required": ["skills"]
-            }
-        }
-    ]
-    completion = execute_single_prompt_with_functions(model=MODEL,
-                                                      messages=[
-                                                          {
-                                                              "role": "user",
-                                                              "content": f"my hv content {text}"
-                                                          },
-
-                                                      ],
-                                                      functions=functions,
-                                                      )
-    return completion
+    return {"message": "File uploaded successfully"}
 
 
 @app.post('/career')
@@ -177,18 +133,37 @@ async def challenge(recommend: Recommend):
 
 @app.post('/search-career')
 async def search_career(recommend: Recommend):
-    completion = execute_single_prompt(
-        model=MODEL,
-        messages=[
-
-            {
-                "role": "user",
-                "content": f"According with my HV and desired jobs, could you recommend me a few poistions"
+    hv_data = open("HV.txt", "r", encoding="utf-8")
+    functions = [
+        {
+            "name": "get_location",
+            "description": "Get the city and country from the user",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "description": "The city, e.g. Bogota",
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "The country, e.g. Colombia",
+                    },
+                },
+                "required": ["country"],
             },
-            {
-                "role": "system",
-                "content": "I would you recommend this jobs for you"
-            }
-        ]
-    )
-    return completion
+        }
+    ]
+    completion = execute_single_prompt_with_functions(model=MODEL,
+                                                      messages=[
+                                                          {
+                                                              "role": "user",
+                                                              "content": f"my hv content {hv_data.read()}"
+                                                          },
+                                                      ],
+                                                      functions=functions,
+                                                      )
+    print(completion.choices[0].message)
+
+    location = json.loads(completion.choices[0].message.function_call.arguments)
+    return search_job(recommend.recommend, location['country'])
