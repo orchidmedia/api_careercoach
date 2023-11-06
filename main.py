@@ -5,7 +5,9 @@ import re
 
 from starlette.middleware.cors import CORSMiddleware
 
+import utils
 from openia.serapi import search_job
+from utils import extract
 
 KEY = os.environ['OPEN_IA_KEY']
 MODEL = os.environ['OPEN_IA_MODEL']
@@ -80,38 +82,16 @@ async def recommend(recommend: Recommend):
 
                                        ])
     response = completion.choices[0].message.content
-    print('openia')
+    print('openia', response)
 
-    # Define regular expressions for titles, subtitles, and content
-    title_pattern = r'\n- (.*?):'
-    titles = re.findall(title_pattern, response, re.MULTILINE)
-    titles = titles[1:]
-
-    description = r'^\d+\.\s(.*?\.)$'
-    body = []
-
-    for i, title in enumerate(titles):
-        # print(title)
-
-        response = response[response.find(title):]
-        descriptions = re.findall(description, response, re.MULTILINE)
-
-        body.append({
-            "title": title,
-            "description": descriptions
-        })
-    body.reverse()
-    descriptions_already_exists = []
-    for item in body:
-        if len(descriptions_already_exists) == 0:
-            descriptions_already_exists.extend(item['description'])
-            continue
-        item['description'] = list(filter(lambda x: x not in descriptions_already_exists, item['description']))
-        descriptions_already_exists.extend(item['description'])
-    body = list(filter(lambda x: len(x['description']) > 0, body))
-    body.reverse()
-
-    return body
+    payload = utils.extract(response)
+    if len(payload) == 0:
+        payload = utils.extract_titles(response)
+    if len(payload) == 0:
+        payload = utils.extract_data(response)
+    if len(payload) == 0:
+        payload = utils.extract_data_2(response)
+    return payload
 
 
 @app.post('/recommend')
