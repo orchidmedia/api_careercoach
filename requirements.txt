@@ -18,6 +18,7 @@ email-validator==2.1.0.post1
 fastapi==0.104.1
 frozenlist==1.4.0
 fsspec==2023.10.0
+google-search-results==2.4.2
 greenlet==3.0.1
 h11==0.14.0
 httpcore==1.0.1
