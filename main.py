@@ -69,7 +69,7 @@ async def upload_csv(file: UploadFile):
         },
         {
             "name": "get_skills",
-            "description": "Get a list of skills in the text, like nodejs, programming, leadership",
+            "description": "Get a list of skills in the text",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -95,7 +95,7 @@ async def upload_csv(file: UploadFile):
                                                       ],
                                                       functions=functions,
                                                       )
-    return {"info": "file uploaded successfully"}
+    return completion
 
 
 @app.post('/career')
@@ -112,22 +112,32 @@ async def recommend(recommend: Recommend):
                                             },
                                            {
                                                "role": "user",
-                                               "content": "As user i would like to know the career path for this job, "
-                                                          "tell me about skills, challenges, advantages and "
-                                                          "disadvantage, how i can learn and grow to reach this job"
+                                               "content": """
+                                               As user i would like to know the career path for this job, divide the text in titles separte from content with :: and subtitles start with - and end with ;
+with numerals and : and description about skills required soft and tech, nice to have, challenges, advantages disadvantage, how i can learn and grow to reach this job, be more specific and detailed
+                                               """
                                            },
-                                           {
-                                               "role": "system",
-                                               "content": "Explain  to user challenges for that job, skills required "
-                                                          "(tech and soft) and career path, advantages and "
-                                                          "disadvantages"
-                                           }
-                                       ])
 
-    messages = completion.choices[0].message.content
-    descriptions = messages.split('.')
-    # Buscar los títulos en el texto
-    return descriptions
+                                       ])
+    response = completion.choices[0].message.content
+    title_pattern = r'[A-Z]+:$'
+    titles = re.findall(title_pattern, response, re.MULTILINE)
+    pattern = r'^-.*\.$'
+
+    body = []
+    for i, title in enumerate(titles):
+        # print(title)
+        descriptions = re.findall(pattern, response, re.MULTILINE)
+
+        response = response[response.find(title):]
+        body.append({
+            "title": title,
+            "description": descriptions
+        })
+    return {
+        'body': body,
+        'conclusion':response
+    }
 
 
 @app.post('/recommend')
