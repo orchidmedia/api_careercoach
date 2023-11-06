@@ -12,7 +12,7 @@ def search_job(query: str, location: str):
         "hl": "es",
         "gl": "co",
         "location": location,
-        "start": "5"
+        "start": "4"
     }
     search = GoogleSearch(params)
     results = search.get_dict()
