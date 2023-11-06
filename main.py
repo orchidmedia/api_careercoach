@@ -163,6 +163,7 @@ async def search_career(recommend: Recommend):
                                                       functions=functions,
                                                       )
     print(completion.choices[0].message)
-
+    if 'function_call' not in completion.choices[0].message:
+        return search_job(recommend.recommend, 'United States')
     location = json.loads(completion.choices[0].message.function_call.arguments)
     return search_job(recommend.recommend, location['country'])
