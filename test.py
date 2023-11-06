@@ -4,57 +4,27 @@ import re
 import utils
 
 response = """
-Full Stack Software Developer:
+Introduction to the role:
+A full stack software developer is a versatile professional who can handle both frontend and backend development. They are responsible for designing, coding, and deploying complete software applications.
 
-- Entry Level Positions: Junior Software Developer, Front-end Developer, Back-end Developer;
-- Mid-Level Positions: Full Stack Developer, Web Developer, Software Engineer;
-- Senior Level Positions: Technical Lead, System Architect, Software Development Manager;
+Responsibilities and job outlook:
+Full stack software developers are involved in all stages of the software development lifecycle, from planning and designing to implementing and testing. They often work in cross-functional teams and are in high demand in the tech industry.
 
-Description of the Skills Required:
+Necessary skills and qualifications:
+To become a successful full stack software developer, you need proficiency in both frontend and backend technologies. Key skills include HTML, CSS, JavaScript, database management, and knowledge of frameworks like React or Angular.
 
-- Soft Skills: Problem-solving, Teamwork, Attention to Detail, Time Management;
-- Technical Skills: HTML, CSS, JavaScript, Front-end Frameworks (React, Angular), Back-end Technologies (Node.js, Express), Databases (SQL, MongoDB), RESTful APIs;
+Advantages and disadvantages:
+The advantage of being a full stack software developer is the ability to work on entire projects independently. However, the breadth of knowledge required can be challenging, and keeping up with evolving technologies is essential.
 
-Nice to Have Skills:
+Learning and growth opportunities:
+To pursue a career as a full stack software developer, consider online courses, coding bootcamps, and practice building complete applications. Building a robust portfolio and contributing to open-source projects can also enhance your skills.
 
-- Mobile App Development (React Native, Flutter), Version Control (Git), DevOps (CI/CD), Cloud Platforms (AWS, Azure), Agile Methodology;
-
-Challenges of Full Stack Development:
-
-- Keeping up with rapidly evolving technologies and frameworks;
-- Balancing between front-end and back-end development tasks;
-- Finding efficient solutions to optimize performance and load times;
-
-Advantages of Full Stack Development:
-
-- Versatility to work on both front-end and back-end projects;
-- Ability to independently develop complete web applications;
-- Strong problem-solving skills and a holistic understanding of software development;
-
-Disadvantages of Full Stack Development:
-
-- The need to constantly update knowledge and learn new technologies;
-- Higher workload and responsibility for entire application development;
-
-Learning and Growth Path:
-
-- Start with front-end development, learn HTML, CSS, and JavaScript;
-- Move to back-end development and learn server-side languages and frameworks;
-- Gain experience with databases, APIs, and deploy applications to cloud platforms;
-- Continuously update skills, join coding bootcamps or online courses;
-- Build a strong portfolio of full-stack applications to showcase your abilities;
-
-To reach this job:
-
-- Develop a passion for coding and problem-solving;
-- Complete relevant coursework or a computer science degree;
-- Gain practical experience through internships or personal projects;
-- Network with professionals in the industry and attend tech events;
-- Continuously learn and adapt to new technologies and industry trends.
+Stay up to date with the latest technology trends and consider specializing in specific areas to further your career growth.
 
 
 """
-print(utils.extract(response))
-print(utils.extract_titles(response))
-print(utils.extract_data(response))
-print(utils.extract_data_2(response))
+#print(utils.extract(response))
+#print(utils.extract_titles(response))
+#print(utils.extract_data(response))
+#print(utils.extract_data_2(response))
+print(utils.extract_data_3(response))

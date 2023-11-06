@@ -91,6 +91,8 @@ async def recommend(recommend: Recommend):
         payload = utils.extract_data(response)
     if len(payload) == 0:
         payload = utils.extract_data_2(response)
+    if len(payload) == 0:
+        payload = utils.extract_data_3(response)
     return payload
 
 

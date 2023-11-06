@@ -1,5 +1,35 @@
 import re
+def extract_data_3(response:str):
+    # Define regular expressions for titles, subtitles, and content
+    title_pattern = r'[A-Za-z].*?\:'
+    titles = re.findall(title_pattern, response, re.MULTILINE)
+    print(titles)
+    titles = titles[1:]
+    description = r'([A-Z][^.]*\.)'
+    body = []
 
+    for i, title in enumerate(titles):
+        # print(title)
+
+        response = response[response.find(title):]
+        descriptions = re.findall(description, response, re.MULTILINE)
+
+        body.append({
+            "title": title,
+            "description": descriptions
+        })
+    body.reverse()
+    descriptions_already_exists = []
+    for item in body:
+        if len(descriptions_already_exists) == 0:
+            descriptions_already_exists.extend(item['description'])
+            continue
+        item['description'] = list(filter(lambda x: x not in descriptions_already_exists, item['description']))
+        descriptions_already_exists.extend(item['description'])
+    body = list(filter(lambda x: len(x['description']) > 0, body))
+    body.reverse()
+    print('body',body)
+    return body
 def extract_data_2(response:str):
     # Define regular expressions for titles, subtitles, and content
     title_pattern = r'[A-Z].*?\:'
