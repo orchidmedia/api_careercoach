@@ -1,41 +1,16 @@
 import re
 
-response = """
-CAREER PATH FOR SENIOR DEVELOPER:
-- Junior Developer: Gain experience in programming languages and basic software development.
-- Mid-level Developer: Expand knowledge in backend development, databases, and project management.
-- Senior Developer: Lead complex projects, mentor junior developers, and possess in-depth technical expertise.
-
-SKILLS REQUIRED:
-- Technical: Proficiency in backend programming languages (Node.js, Python) and database management.
-- Soft: Strong problem-solving, teamwork, leadership, and project management skills.
-- Challenges: Solving complex technical issues, leading development teams, and architecting scalable solutions.
-- Advantages: High salary, autonomy, and opportunities for personal and professional growth.
-
-HOW TO LEARN AND GROW:
-- Acquire certifications in relevant technologies (e.g., MongoDB, AWS).
-- Contribute to open-source projects and build a strong online developer presence.
-- Attend workshops and industry conferences to stay updated on the latest technologies and trends.
-- Pursue advanced courses in software architecture and project management.
-
-DISADVANTAGES:
-- High-pressure situations and tight deadlines.
-- Continuous learning and staying updated with evolving technologies.
-
-CONCLUSION:
-Becoming a Senior Developer requires a combination of technical expertise, leadership abilities, and project management skills. Continuous learning and hands-on experience are crucial for career growth in this role.
-
+response = """Career Path for Full Stack Developer:\n- Introduction: \n  - Full Stack Developer is a versatile role that involves both front-end and back-end development.\n  - They are responsible for designing and implementing complete software solutions.\n  - Full Stack Developers work on various technologies and platforms.\n\n- Skills Required:\n  - Technical Skills: proficiency in front-end and back-end technologies like HTML, CSS, JavaScript, Node.js, and databases.\n  - Soft Skills: problem-solving, teamwork, time management, and good communication.\n  \n- Nice to Have Skills:\n  - Knowledge of frameworks like React, Angular, and Express.\n  - Familiarity with cloud platforms, such as AWS or Azure.\n\n- Challenges:\n  - Managing different technologies and learning new frameworks.\n  - Balancing client requirements and project constraints.\n  - Staying updated with the latest industry trends.\n\n- Advantages:\n  - Job prospects are high due to the increasing demand for full stack developers.\n  - Versatility in working on diverse projects and technologies.\n  - Potential for career growth and higher salaries.\n\n- Disadvantages:\n  - Work can be demanding with tight deadlines and frequent changes.\n  - Continuous learning required to keep up with evolving technologies.\n\n- Learning and Growth:\n  - Start with basic web development courses and practice building small projects.\n  - Expand knowledge in front-end and back-end frameworks, databases, and cloud platforms.\n  - Build a strong portfolio and contribute to open-source projects.\n  - Consider certifications and advanced courses to enhance your expertise.\n\n- Detailed Job Description:\n  - Full Stack Developers handle both front-end and back-end development, ensuring seamless integration.\n  - They collaborate with designers, developers, and stakeholders to understand project requirements.\n  - Full Stack Developers design and implement responsive user interfaces using HTML, CSS, and JavaScript.\n  - They develop server-side logic, database schemas, and APIs using frameworks like Node.js and Express.\n  - Full Stack Developers troubleshoot and debug issues, conduct testing, and ensure optimal performance.\n\n- Career Progression:\n  - Junior Full Stack Developer\n  - Full Stack Developer\n  - Senior Full Stack Developer\n  - Tech Lead/Architect\n  - Project Manager or CTO"
 """
 
 # Define regular expressions for titles, subtitles, and content
-title_pattern = r'[A-Z]+:$'
+title_pattern = r'\n- (.*?):'
 titles = re.findall(title_pattern, response, re.MULTILINE)
-pattern = r'^-.*\.$'
-
+description = r'- .*?\.\s'
 body = []
 for i, title in enumerate(titles):
-    #print(title)
-    descriptions = re.findall(pattern, response, re.MULTILINE)
+    # print(title)
+    descriptions = re.findall(description, response, re.MULTILINE)
 
     response = response[response.find(title):]
     body.append({
@@ -44,4 +19,4 @@ for i, title in enumerate(titles):
     })
 print(body)
 print(response)
-    # print(response)
+# print(response)

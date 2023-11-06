@@ -120,23 +120,24 @@ with numerals and : and description about skills required soft and tech, nice to
 
                                        ])
     response = completion.choices[0].message.content
-    title_pattern = r'[A-Z]+:$'
+    title_pattern = r'\n- (.*?):'
     titles = re.findall(title_pattern, response, re.MULTILINE)
-    pattern = r'^-.*\.$'
-
+    description = r'- .*?\.\s'
     body = []
     for i, title in enumerate(titles):
         # print(title)
-        descriptions = re.findall(pattern, response, re.MULTILINE)
+        descriptions = re.findall(description, response, re.MULTILINE)
 
         response = response[response.find(title):]
         body.append({
             "title": title,
             "description": descriptions
         })
+    print(body)
+    print(response)
     return {
         'body': body,
-        'conclusion':response
+        'conclusion': response
     }
 
 
