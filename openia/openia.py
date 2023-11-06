@@ -2,13 +2,29 @@
 import os
 
 import openai
+
 openai.api_key = os.getenv('OPEN_IA_KEY')
-def execute_single_prompt(model:str,messages:list[dict]):
+
+
+def execute_single_prompt(model: str, messages: list[dict]):
     completion = openai.ChatCompletion.create(
         model=model,
         messages=messages,
         temperature=0.9,
         max_tokens=1024
+        # token_max_length=500,
+    )
+    return completion
+
+
+def execute_single_prompt_with_functions(model: str, messages: list[dict], functions: list[dict]):
+    completion = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        temperature=0.9,
+        max_tokens=1024,
+        functions=functions,
+        function_call="auto",
         # token_max_length=500,
     )
     return completion
