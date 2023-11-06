@@ -16,4 +16,5 @@ def search_job(query: str, location: str):
     }
     search = GoogleSearch(params)
     results = search.get_dict()
+    results['jobs_results'] = results['jobs_results'][:4]
     return results
