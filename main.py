@@ -69,31 +69,19 @@ async def recommend(recommend: Recommend):
                                            {
                                                "role": "user",
                                                "content": """
-                                               As user i would like to know the career path for this job, divide the text in titles separte from content with :: and subtitles start with - and end with ;
-with numerals and : and description about skills required soft and tech, nice to have, challenges, advantages disadvantage, how i can learn and grow to reach this job, be more specific and detailed
+                                               As user i would like to know the career path for this 
+                                               job, divide the text in titles separate from content with : and 
+                                               subtitles start with - and end with ; with numerals and :
+                                               Tell me description about skills required soft and tech, nice to have, 
+                                               challenges, advantages disadvantage, how i can learn and grow to reach 
+                                               this job, be more specific and detailed
                                                """
                                            },
 
                                        ])
     response = completion.choices[0].message.content
-    title_pattern = r'\n- (.*?):'
-    titles = re.findall(title_pattern, response, re.MULTILINE)
-    description = r'- .*?\.\s'
-    body = []
-    for i, title in enumerate(titles):
-        # print(title)
-        descriptions = re.findall(description, response, re.MULTILINE)
-
-        response = response[response.find(title):]
-        body.append({
-            "title": title,
-            "description": descriptions
-        })
-    print(body)
-    print(response)
     return {
-        'body': body,
-        'conclusion': response
+        'body': response
     }
 
 
