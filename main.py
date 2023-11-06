@@ -101,10 +101,6 @@ async def upload_csv(file: UploadFile):
 @app.post('/career')
 async def recommend(recommend: Recommend):
     hv_data = open("HV.txt", "r", encoding="utf-8")
-    # Create a prompt for the OpenAI API
-    prompt = f"Q: My goad is be a {recommend.recommend}?\n"
-    prompt2 = f"Q: Give 4 choices \n"
-    # Execute the prompt against the chosen LLM Model
     completion = execute_single_prompt(model=MODEL,
                                        messages=[
                                            {
@@ -112,24 +108,26 @@ async def recommend(recommend: Recommend):
                                                "content": f"my hv content {hv_data.read()}"
                                            },
                                            {"role": "user",
-                                            "content": prompt
+                                            "content": f'be a {recommend.recommend}'
                                             },
                                            {
+                                               "role": "user",
+                                               "content": "As user i would like to know the career path for this job, "
+                                                          "tell me about skills, challenges, advantages and "
+                                                          "disadvantage, how i can learn and grow to reach this job"
+                                           },
+                                           {
                                                "role": "system",
-                                               "content": "I recommend this 4 carrier path for you"
+                                               "content": "Explain  to user challenges for that job, skills required "
+                                                          "(tech and soft) and career path, advantages and "
+                                                          "disadvantages"
                                            }
                                        ])
+
     messages = completion.choices[0].message.content
-    descriptions = messages.split('\n\n')
+    descriptions = messages.split('.')
     # Buscar los títulos en el texto
-    titles = re.findall(REGEX_TITLES, messages)
-    response = []
-    for title in range(0, len(titles)):
-        response.append({
-            "title": titles[title],
-            "description": descriptions[title + 1].replace(titles[title], '')
-        })
-    return response
+    return descriptions
 
 
 @app.post('/recommend')
