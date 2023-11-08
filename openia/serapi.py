@@ -9,8 +9,7 @@ def search_job(query: str, location: str):
         "engine": "google_jobs",
         "google_domain": "google.com.co",
         "q": query,
-        "hl": "es",
-        "gl": "co",
+        "hl": "en",
         "location": location,
         "start": "4"
     }

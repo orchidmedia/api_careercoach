@@ -1,24 +1,36 @@
-# Executes a single prompt against the chosen LLM Model
 import os
+from openai import OpenAI
 
-import openai
+client = OpenAI(
+    # defaults to os.environ.get("OPENAI_API_KEY")
+    api_key=os.getenv('OPEN_IA_KEY'),
+)
 
-openai.api_key = os.getenv('OPEN_IA_KEY')
 
-
-def execute_single_prompt(model: str, messages: list[dict]):
-    completion = openai.ChatCompletion.create(
+def execute_single_prompt_with_model(model: str, messages: list[dict]):
+    completion = client.chat.completions.create(
         model=model,
         messages=messages,
-        temperature=0.9,
         max_tokens=1024
         # token_max_length=500,
     )
+    print(completion.choices[0].message.content)
+    return completion
+
+
+def execute_single_prompt(model: str, messages: list[dict]):
+    completion = client.chat.completions.create(
+        model='gpt-4',
+        messages=messages,
+        max_tokens=1024
+        # token_max_length=500,
+    )
+    print(completion.choices[0].message.content)
     return completion
 
 
 def execute_single_prompt_with_functions(model: str, messages: list[dict], functions: list[dict]):
-    completion = openai.ChatCompletion.create(
+    completion = client.chat.completions.create(
         model=model,
         messages=messages,
         temperature=0.9,
