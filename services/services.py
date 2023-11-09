@@ -19,24 +19,20 @@ class RecommendationService:
                                                               "content": f"my hv content {text}"
                                                           },
                                                           {"role": "user",
-                                                           "content": f'Based on my HV text, can you recommend me 4 '
-                                                                      f'jobs?'
+                                                           "content": 'Based on my Curriculum Vitale text, please give me 4 clear recommendations to Improve the CV. Be specific with titles and descriptions, and again, only 4 recommendations'
                                                            },
                                                           {
                                                               "role": "user",
                                                               "content": "Use json format key title as string to describe item and "
-                                                                         "description as a array of strings"
+                                                                         "description as a array of strings example [{\"title\":\"title\", \"description\":[\"description1\", \"description2\"]}]"
                                                           },
 
                                                       ])
 
         response = json.loads(completion.choices[0].message.content)
-        values = list(response.values())
-        if type(values[0])==list:
-            values = values[0]
 
-        keys = list(map(lambda x: x['title'], values))
+        keys = list(map(lambda x: x['title'], response))
         file_location = f"recommendation_job.json"
         with open(file_location, "wb+") as file_object:
             file_object.write(json.dumps(keys).encode())
-        return values
+        return response
