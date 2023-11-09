@@ -1,4 +1,45 @@
+import json
+
 import utils
 
-response = """{\n  \"Soft Skills\": [\n    \"Team leadership and management\",\n    \"Excellent communication and collaboration\",\n    \"Problem-solving and decision-making\",\n    \"Adaptability and resilience\",\n    \"Strong time management and organization\"\n  ],\n  \"Hard Skills\": [\n    \"Proficiency in JavaScript and Node.js\",\n    \"Experience with backend development\",\n    \"Knowledge of RESTful APIs and GraphQL\",\n    \"Familiarity with databases like SQL and NoSQL\",\n    \"Test frameworks like Mocha and Chai\",\n    \"Cloud platforms like AWS or Firebase\",\n    \"Version control with Git\",\n    \"Understanding of Agile/Scrum methodologies\"\n  ],\n  \"Challenges\": [\n    \"Leading and coordinating development teams\",\n    \"Balancing technical responsibilities with leadership tasks\",\n    \"Ensuring code quality and scalability\",\n    \"Guiding architectural decisions\",\n    \"Managing project timelines and expectations\"\n  ],\n  \"Advantages\": [\n    \"Opportunity to shape technical solutions and strategies\",\n    \"Increased responsibility and leadership growth\",\n    \"Work on challenging and complex projects\",\n    \"Collaborate with cross-functional teams\",\n    \"Stay updated with emerging technologies\"\n  ],\n  \"Disadvantages\": [\n    \"Higher pressure and accountability\",\n    \"More focus on coordination and project management\",\n    \"Less time for hands-on coding\",\n    \"Potential conflict resolution and team management challenges\"\n  ],\n  \"Nice-To-Have\": [\n    \"Experience with containerization and orchestration (Docker, Kubernetes)\",\n    \"Knowledge of frontend frameworks like React.js\",\n    \"Understanding of serverless architecture\",\n    \"Security and performance optimization skills\"\n  ]\n}"""
-print(utils.extract_carrer_path_challenges(response))
+response = """"{
+  "job1": {
+    "title": "Senior Backend Developer",
+    "description": [
+      "Experience since 2015 in software and business development",
+      "Design, build, and create MVPs for Apps and API's",
+      "Proficient in Node.js, Python, SQL and NoSQL databases",
+      "Knowledge in Scrum working methodology"
+    ]
+  },
+  "job2": {
+    "title": "Software Technical Lead",
+    "description": [
+      "Lead technical teams to improve shipping processes",
+      "Develop and optimize backend services",
+      "Proficient in TypeScript, GraphQL, and AWS",
+      "Strong problem-solving and communication skills"
+    ]
+  },
+  "job3": {
+    "title": "Semi Senior Backend Developer",
+    "description": [
+      "Structure and optimize backend services",
+      "Work with webhooks and payment platforms",
+      "Experience in creating business models and KPIs",
+      "Proficient in TypeScript, Golang, and Firebase"
+    ]
+  },
+  "job4": {
+    "title": "Business and Research Developer",
+    "description": [
+      "Experience with proximity and location-based technologies",
+      "Quick creation of demos and MVPs",
+      "Knowledge in AI, NLP, and E-commerce",
+      "Proficient in AWS, DialogFlow, and TensorFlow"
+    ]
+  }
+}"""
+text = json.loads(response)
+print(text)
+

@@ -19,18 +19,24 @@ class RecommendationService:
                                                               "content": f"my hv content {text}"
                                                           },
                                                           {"role": "user",
-                                                           "content": f'Based on my HV text, can you recommend me 4 jobs?'
+                                                           "content": f'Based on my HV text, can you recommend me 4 '
+                                                                      f'jobs?'
                                                            },
                                                           {
                                                               "role": "user",
-                                                              "content": "Use format with bullets to separate the jobs, "
-                                                                         "for example: \n\n - Software Engineer \n - Data "
-                                                                         "Scientist \n - Data Engineer \n - Data Analyst"
-                                                          }
+                                                              "content": "Use json format key title as string to describe item and "
+                                                                         "description as a array of strings"
+                                                          },
+
                                                       ])
-        response = completion.choices[0].message.content
-        response = list(map(lambda x: re.sub(r'[^a-zA-Z0-9\s]', '', x), response.split('\n')))
+
+        response = json.loads(completion.choices[0].message.content)
+        values = list(response.values())
+        if type(values[0])==list:
+            values = values[0]
+
+        keys = list(map(lambda x: x['title'], values))
         file_location = f"recommendation_job.json"
         with open(file_location, "wb+") as file_object:
-            file_object.write(json.dumps(response).encode())
-        return response
+            file_object.write(json.dumps(keys).encode())
+        return values
