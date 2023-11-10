@@ -66,7 +66,7 @@ async def recommend(recommend: Recommend):
                                            },
                                            {
                                                "role": "system",
-                                               "content": f'Take note with jobs that i suggest {recommend_jobs}'
+                                               "content": f'Take notes based on the career path that suggested {recommend_jobs}'
                                            },
                                            {
                                                 "role": "user",
@@ -103,7 +103,7 @@ async def challenge(recommend: Recommend):
             },
             {
                 "role": "user",
-                "content": f'I would like to be a {recommend.recommend}'
+                "content": f'This is the career path recommendation {recommend.recommend}'
             },
             {
                 "role": "user",
@@ -111,11 +111,11 @@ async def challenge(recommend: Recommend):
                            "for example: \n\n - Software Engineer: long description of this carrier. \n - Data "
                            "Scientist: long description of this carrier."
             },
-            {"role": "assistant",
+            {"role": "system",
              "content": "Based in the previous message, recommend 4 ideal professional career paths"
              },
             {
-                "role": "system",
+                "role": "assistant",
                 "content": "I would like to recommend this 4 career path for you"
             }
         ]
