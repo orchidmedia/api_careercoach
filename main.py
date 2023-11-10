@@ -68,14 +68,20 @@ async def recommend(recommend: Recommend):
                                                "role": "system",
                                                "content": f'Take note with jobs that i suggest {recommend_jobs}'
                                            },
-                                           {"role": "user",
-                                            "content": f'I would like to be a {recommend.recommend}'
+                                           {
+                                                "role": "user",
+                                                "content": f'I would like to be a {recommend.recommend}'
                                             },
-
-                                           {"role": "user",
-                                            "content": """Based career path selected, list me the Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an orginize list with tile and description"""
-                                              
-                                           },
+                                           {
+                                                "role": "user",
+                                                "content": "Based career path selected, list me the Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an orginize list with tile and description"  
+                                            },
+                                            {
+                                                "role": "user",
+                                                "content": "Use format with bullets to separate the titles, "
+                                                "for example: \n\n - Hard Skill: Google Analytics expert. \n - Data "
+                                                "Scientist: long description of this carrier."
+                                            },
 
                                        ])
     response = completion.choices[0].message.content
@@ -93,11 +99,11 @@ async def challenge(recommend: Recommend):
         messages=[
             {
                 "role": "user",
-                "content": f"my hv content {hv_data.read()}"
+                "content": f"this is my resume or cv content {hv_data.read()}"
             },
             {
                 "role": "user",
-                "content": f'I would to be a {recommend.recommend}'
+                "content": f'I would like to be a {recommend.recommend}'
             },
             {
                 "role": "user",
