@@ -83,8 +83,7 @@ async def recommend(recommend: Recommend):
                                            },
                                            {
                                                "role": "user",
-                                               "content": "Use json format key title as string to describe item and"
-                                                        "description as a array of strings example [{\"title\":\"title\", \"description\":[\"description1\", \"description2\"]}]"
+                                               "content": "Use json format key title as string to describe item and description as an array of strings"
                                            },
 
                                        ])
