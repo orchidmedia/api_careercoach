@@ -69,15 +69,12 @@ async def recommend(recommend: Recommend):
                                                "content": f'Take note with jobs that i suggest {recommend_jobs}'
                                            },
                                            {"role": "user",
-                                            "content": f'I want to be a {recommend.recommend}'
+                                            "content": f'I would like to be a {recommend.recommend}'
                                             },
-                                           {
-                                               "role": "user",
-                                               "content": """Based on the career path selected, 
-                                                and applying the previous input of the user's dream job description 
-                                                and resume, please provide the following insights about 
-                                                the career path previously selected in an organized list with the following titles: Soft Skills, Hard Skills, 
-                                                Challenges, Advantages, Disadvantages, and Nice-To-Have"""
+
+                                           {"role": "user",
+                                            "content": """Based career path selected, list me the Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an orginize list with tile and description"""
+                                              
                                            },
 
                                        ])
