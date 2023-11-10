@@ -76,14 +76,8 @@ async def recommend(recommend: Recommend):
                                                "content": """Based on the career path selected, 
                                                 and applying the previous input of the user's dream job description 
                                                 and resume, please provide the following insights about 
-                                                the career path previously selected in an organized list: Soft Skills, Hard Skills, 
-                                                Challenges, Advantages, Disadvantages, and Nice-To-Have. Please be as 
-                                                specific as possible and do not repeat information from one insight 
-                                                into the other one."""
-                                           },
-                                           {
-                                               "role": "user",
-                                               "content": "Use json format key title as string to describe item and description as an array of strings"
+                                                the career path previously selected in an organized list with the following titles: Soft Skills, Hard Skills, 
+                                                Challenges, Advantages, Disadvantages, and Nice-To-Have"""
                                            },
 
                                        ])
