@@ -36,7 +36,7 @@ async def root():
     logger.info("Hellow world")
     return {"message": "Hello World"}
 
-
+# Upload CV process
 @app.post("/upload/csv")
 async def upload_csv(file: UploadFile):
     file_location = f"{file.filename}"

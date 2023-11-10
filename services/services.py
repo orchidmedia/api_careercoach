@@ -19,7 +19,7 @@ class RecommendationService:
                                                               "content": f"my hv content {text}"
                                                           },
                                                           {"role": "user",
-                                                           "content": 'Based on my Curriculum Vitale text, please give me 4 clear recommendations to Improve the CV. Be specific with titles and descriptions, and again, only 4 recommendations'
+                                                           "content": 'Based on my Curriculum Vitale text, please give me 4 clear recommendations to improve my resume. Be specific with titles and descriptions of each recommendation, and again, only 4 recommendations'
                                                            },
                                                           {
                                                               "role": "user",
