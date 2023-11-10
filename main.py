@@ -44,7 +44,7 @@ async def upload_csv(file: UploadFile):
         file_object.write(file.file.read())
     text = text_from_pdf(file_location)
 
-    # Save the modified text to a text file
+    # Save the modified CV to a text file
     output_filename = f"HV.txt"
     with open(output_filename, "w", encoding="utf-8") as file:
         file.write(text)
@@ -73,13 +73,13 @@ async def recommend(recommend: Recommend):
                                             },
                                            {
                                                "role": "user",
-                                               "content": """As the user, based on the career path selected, 
-                                               and applying the previous input of the user's dream job description 
-                                               and resume, I would like you to give me the following insights for a 
-                                               future job hunt in an organized list: Soft Skills, Hard Skills, 
-                                               Challenges, Advantages, Disadvantages, and Nice-To-Have. Please be as 
-                                               specific as possible and do not repeat information from one insight 
-                                               into the other one."""
+                                               "content": """Based on the career path selected, 
+                                                and applying the previous input of the user's dream job description 
+                                                and resume, please provide the following insights about 
+                                                the career path previously selected in an organized list: Soft Skills, Hard Skills, 
+                                                Challenges, Advantages, Disadvantages, and Nice-To-Have. Please be as 
+                                                specific as possible and do not repeat information from one insight 
+                                                into the other one."""
                                            },
                                            {
                                                "role": "user",
@@ -96,6 +96,7 @@ async def recommend(recommend: Recommend):
 @app.post('/recommend')
 async def challenge(recommend: Recommend):
     hv_data = open("HV.txt", "r", encoding="utf-8")
+
     # Execute the prompt against the chosen LLM Model
     completion = execute_single_prompt_with_model(
         model=MODEL,
@@ -115,11 +116,11 @@ async def challenge(recommend: Recommend):
                            "Scientist: long description of this carrier."
             },
             {"role": "assistant",
-             "content": "Based in the previous message, I recommend this 4 carrier path for you"
+             "content": "Based in the previous message, recommend 4 ideal professional career paths"
              },
             {
                 "role": "system",
-                "content": "I would like to recommend this 4 carrier path for you"
+                "content": "I would like to recommend this 4 career path for you"
             }
         ]
     )
