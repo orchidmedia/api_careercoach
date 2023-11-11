@@ -74,7 +74,7 @@ async def recommend(recommend: Recommend):
                                             },
                                            {
                                                 "role": "system",
-                                                "content": "Based career path selected, list me the Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an orginize list with tile and description"  
+                                                "content": "Based career path selected, list me the the following titles: Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an organized list with each tile with the corresponding description and be very detailed with each description"  
                                             },
                                             {
                                                 "role": "user",

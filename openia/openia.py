@@ -6,7 +6,7 @@ client = OpenAI(
     api_key=os.getenv('OPEN_IA_KEY'),
 )
 
-
+#This executes the first endpoint which loads, read the resume and generates the 4 recommendations
 def execute_single_prompt_with_model(model: str, messages: list[dict]):
     completion = client.chat.completions.create(
         model=model,
