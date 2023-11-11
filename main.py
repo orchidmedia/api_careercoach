@@ -73,20 +73,20 @@ async def recommend(recommend: Recommend):
                                                 "content": f'I would like to be a {recommend.recommend}'
                                             },
                                            {
-                                                "role": "user",
+                                                "role": "system",
                                                 "content": "Based career path selected, list me the Soft Skills, Hard Skills, Challenges, Advantages, Disadvantages and Nice-To-Have for the career path. Please do it in an orginize list with tile and description"  
                                             },
                                             {
                                                 "role": "user",
-                                                "content": "Use format with bullets to separate the titles, "
-                                                "for example: \n\n - Hard Skill: Google Analytics expert. \n - Data "
-                                                "Scientist: long description of this carrier."
+                                                "content": "Use json format key title as string to describe item and"
+                                                "description as a array of strings example [{\"title\":\"title\", \"description\":[\"description1\", \"description2\"]}]"
                                             },
 
                                        ])
     response = completion.choices[0].message.content
 
-    return utils.extract_carrer_path_challenges(response)
+    return json.loads (response)
+#utils.extract_carrer_path_challenges(response)
 
 
 @app.post('/recommend')

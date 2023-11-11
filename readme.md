@@ -21,7 +21,7 @@ curl --location 'http://127.0.0.1:8000/upload/csv' \
 curl --location 'http://127.0.0.1:8000/recommend' \
 --header 'Content-Type: application/json' \
 --data '{
-    "recommend":"I want be a software develop"
+    "recommend":"I would love to combine my current set of skills from the CV uploaded before with the fashion industry"
 }'
 ```
 
