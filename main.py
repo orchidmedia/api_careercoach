@@ -66,7 +66,7 @@ async def recommend(recommend: Recommend):
                                            },
                                            {
                                                "role": "system",
-                                               "content": f'Take notes based on the career path that suggested {recommend_jobs}'
+                                               "content": f'Take notes based on the resumme from {recommend_jobs}'
                                            },
                                            {
                                                 "role": "user",
@@ -106,23 +106,24 @@ async def challenge(recommend: Recommend):
                 "content": f'This is the career path recommendation {recommend.recommend}'
             },
             {
-                "role": "user",
-                "content": "Use format with bullets to separate the jobs, "
-                           "for example: \n\n - Software Engineer: long description of this carrier. \n - Data "
-                           "Scientist: long description of this carrier."
-            },
-            {"role": "system",
-             "content": "Based in the previous message, recommend 4 ideal professional career paths"
+                "role": "system",
+             "content": "Based in the previous message, recommend 4 ideal professional career paths. Please do it in a numeric organized list ALWAYS." 
              },
             {
                 "role": "assistant",
                 "content": "I would like to recommend this 4 career path for you"
-            }
+            },
+            {
+                "role": "user",
+                "content": "Use json format key title as string to describe item and"
+                "description as a array of strings example [{\"title\":\"title\", \"description\":[\"description1\", \"description2\"]}]"
+                                            }
         ]
     )
 
     messages = completion.choices[0].message.content
-    return utils.extract_recommend(messages)
+    return json.loads(messages)
+    #return utils.extract_recommend(messages)
 
 
 @app.post('/search-career')
